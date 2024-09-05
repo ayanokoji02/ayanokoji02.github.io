@@ -6,28 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
+            position: relative;
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background: #000000;
             color: #e0e0e0;
             line-height: 1.6;
-            transition: background-color 0.5s, color 0.5s;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 20px;
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url('') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
         }
 
         header {
             text-align: center;
-            background: linear-gradient(135deg, #00bfff, #1e90ff);
+            background: transparent; /* Changed to transparent */
             padding: 40px 20px;
-            border-bottom: 5px solid #00bfff;
+            border-bottom: 5px solid #00aaff;
             color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         header img {
@@ -35,138 +40,193 @@
             width: 180px;
             border: 5px solid #fff;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: zoomIn 5s infinite; /* Apply zoom-in animation */
         }
 
-        header img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1); /* Zoom in */
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
         header h1 {
             margin: 20px 0 0;
             font-size: 2.5rem;
             color: #fff;
-            animation: fadeIn 2s ease-out;
+            animation: headerAnimation 2s ease-in-out infinite;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        @keyframes headerAnimation {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-10px);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1; /* Ensure the content is above the background */
         }
 
         section {
-            background: #0d0d0d;
+            background: #1a1a1a;
             margin: 20px 0;
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+            text-align: center; /* Center text */
+            position: relative;
         }
 
         section:hover {
-            background: #1a1a1a;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            background: #2a2a2a;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background: #00aaff;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover::before {
+            transform: scaleX(1);
         }
 
         h2 {
-            color: #00bfff;
-            border-bottom: 3px solid #00bfff;
+            color: #00aaff;
+            border-bottom: 3px solid transparent;
             padding-bottom: 10px;
             margin-bottom: 20px;
             font-size: 2rem;
+            position: relative;
+            overflow: hidden;
             transition: color 0.3s ease;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #00aaff;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease, background 0.3s ease;
         }
 
         h2:hover {
             color: #fff;
         }
 
-        a {
-            color: #00bfff;
-            text-decoration: none;
-            position: relative;
+        h2:hover::after {
+            transform: scaleX(1);
+            background: #fff;
+        }
+
+        p {
+            color: #e0e0e0;
             transition: color 0.3s ease;
         }
 
-        a:hover {
+        p:hover {
             color: #fff;
-        }
-
-        a::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -5px;
-            width: 0;
-            height: 2px;
-            background: #00bfff;
-            transition: width 0.3s ease, left 0.3s ease;
-        }
-
-        a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 1.1em;
-            color: #fff;
-            background-color: #00bfff;
-            border: none;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s, transform 0.3s;
-        }
-
-        .button:hover {
-            background-color: #1e90ff;
-            color: #000;
-            transform: scale(1.05);
-        }
-
-        .social-links {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #1a1a1a;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .social-links a {
-            display: inline-block;
-            color: #00bfff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 1.5em;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #fff;
-            transform: scale(1.1);
-        }
-
-        .social-links i {
-            margin-right: 8px;
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background: #000000;
+            background: #333;
             color: #fff;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
         }
 
         footer p {
             margin: 0;
             font-size: 1rem;
+        }
+
+        .button, .social-links a {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            background: #00aaff;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .button::before, .social-links a::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            transform: translateX(-50%) scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .button:hover, .social-links a:hover {
+            background: #007aff;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .button:hover::before, .social-links a:hover::before {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: #222;
+            border-radius: 8px;
+            text-align: center; /* Center text in social links */
+        }
+
+        .social-links a {
+            margin: 0 15px;
+            color: #e0e0e0;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
         }
 
         @media (max-width: 768px) {
@@ -183,21 +243,10 @@
             }
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const smoothScrollElements = document.querySelectorAll(".smooth-scroll");
-            smoothScrollElements.forEach(elem => {
-                elem.addEventListener("click", e => {
-                    e.preventDefault();
-                    document.querySelector(elem.getAttribute("href")).scrollIntoView({
-                        behavior: "smooth"
-                    });
-                });
-            });
-        });
-    </script>
 </head>
 <body>
+    <div class="background"></div>
+
     <header>
         <div class="container">
             <img src="https://media.discordapp.net/attachments/1162082680431714355/1280980762547454014/8c25a2b62fa8bf1aa3b097e10235cddd.jpg?ex=66da0dcd&is=66d8bc4d&hm=995bba961261b1992dbb4b34b4c34eb5968f2c921ad97558a976c919a16c8e94&=&format=webp&width=507&height=507" alt="Ayan Islam" class="profile-picture">
@@ -226,16 +275,15 @@
             <p>📬 Let's connect! Whether you have a question or just want to say hi, I'm all ears. Reach out to me, and let's start a conversation that could lead to our next big adventure.</p>
             <a href="mailto:muntasimbillah281@gmail.com" class="button">Email Me</a>
             <div class="social-links">
-                <a href="https://www.facebook.com/yourprofile" target="_blank"><i class="fa fa-facebook"></i>Facebook</a>
-                <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fa fa-instagram"></i>Instagram</a>
-                <a href="https://discord.gg/yourdiscord" target="_blank"><i class="fa fa-discord"></i>Discord</a>
+                <a href="https://www.facebook.com/yourprofile"
+                <a href="https://www.facebook.com/yourprofile" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+                <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+                <a href="https://discord.gg/yourdiscord" target="_blank"><i class="fa fa-discord"></i> Discord</a>
             </div>
         </section>
     </div>
-
     <footer>
         <p>Copyright © 2024 Ayan Islam. All rights reserved.</p>
-    </
     </footer>
 
     <!-- Font Awesome for social media icons -->
