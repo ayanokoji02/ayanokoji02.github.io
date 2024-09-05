@@ -9,9 +9,10 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f9;
-            color: #333;
+            background: #121212;
+            color: #e0e0e0;
             line-height: 1.6;
+            transition: background-color 0.5s, color 0.5s;
         }
 
         .container {
@@ -22,10 +23,11 @@
 
         header {
             text-align: center;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            background: linear-gradient(135deg, #ff0081, #ff8c00);
             padding: 40px 20px;
-            border-bottom: 5px solid #ff6f61;
+            border-bottom: 5px solid #00bfae;
             color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         header img {
@@ -33,6 +35,12 @@
             width: 180px;
             border: 5px solid #fff;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        header img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
         header h1 {
@@ -41,34 +49,58 @@
             color: #fff;
         }
 
-        .profile-picture {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-picture:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-        }
-
         section {
-            background: #fff;
+            background: #1e1e1e;
             margin: 20px 0;
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: background 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
 
         section:hover {
-            background: #f9f9f9;
+            background: #2c2c2c;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
         }
 
         h2 {
-            color: #6a11cb;
-            border-bottom: 3px solid #6a11cb;
+            color: #ff0081;
+            border-bottom: 3px solid #ff0081;
             padding-bottom: 10px;
             margin-bottom: 20px;
             font-size: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        h2:hover {
+            color: #ff8c00;
+        }
+
+        a {
+            color: #00bfae;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff0081;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: #ff0081;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        a:hover::after {
+            width: 100%;
+            left: 0;
         }
 
         footer {
@@ -76,6 +108,7 @@
             padding: 20px;
             background: #333;
             color: #fff;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
         }
 
         footer p {
@@ -83,14 +116,40 @@
             font-size: 1rem;
         }
 
-        .smooth-scroll {
-            transition: background 0.3s ease, box-shadow 0.3s ease;
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            color: #fff;
+            background-color: #00bfae;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
-        .smooth-scroll:hover {
-            background: #ff6f61;
-            color: #fff;
-            box-shadow: 0 0 20px rgba(255, 111, 97, 0.6);
+        .button:hover {
+            background-color: #009c8f;
+            transform: scale(1.05);
+        }
+
+        .social-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #00bfae;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff0081;
         }
 
         @media (max-width: 768px) {
@@ -132,12 +191,12 @@
     <div class="container">
         <section id="about-me">
             <h2>About Me</h2>
-            <p>👋 Hi there! I'm Ayan Islam, a seasoned Java developer with a flair for creating immersive game experiences using Unreal and Unity. I'm also adept at constructing robust database architectures. Welcome to my digital space where innovation meets efficiency!</p>
+            <p>👋 Hi there! I'm Ayan Islam, a 19-year-old aspiring entrepreneur with a passion for learning new skills and watching anime. I am the founder of Ascendancy, a thriving Discord community, and currently, I'm focused on mastering DropShipping while working on my Notion OS. With 3 years of experience as a Notion expert, I'm also building a YouTube channel where I will create tutorials to help others build their own Notion OS and explore the full potential of Notion.</p>
         </section>
 
         <section id="projects">
             <h2>Projects</h2>
-            <p>🚀 I was the owner of the Minex Network, one of the larger Minecraft Servers in Asia during 2021. I have developed Java Plugins such as MinexPractice and many more!</p>
+            <p>🚀 Explore my projects and the work I've done as a Notion expert, and discover how I can help you organize your life or business with custom Notion setups.</p>
         </section>
 
         <section id="skills">
@@ -148,6 +207,7 @@
         <section id="contact">
             <h2>Contact</h2>
             <p>📬 Let's connect! Whether you have a question or just want to say hi, I'm all ears. Reach out to me, and let's start a conversation that could lead to our next big adventure.</p>
+            <a href="mailto:muntasimbillah281@gmail.com" class="button">Email Me</a>
         </section>
     </div>
 
