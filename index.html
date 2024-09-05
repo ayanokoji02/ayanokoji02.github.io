@@ -47,6 +47,12 @@
             margin: 20px 0 0;
             font-size: 2.5rem;
             color: #fff;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         section {
@@ -73,7 +79,7 @@
         }
 
         h2:hover {
-            color: #1e90ff;
+            color: #fff;
         }
 
         a {
@@ -84,7 +90,7 @@
         }
 
         a:hover {
-            color: #1e90ff;
+            color: #fff;
         }
 
         a::after {
@@ -103,19 +109,6 @@
             left: 0;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #000000;
-            color: #fff;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 1rem;
-        }
-
         .button {
             display: inline-block;
             padding: 10px 20px;
@@ -127,29 +120,53 @@
             text-align: center;
             text-decoration: none;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
         }
 
         .button:hover {
             background-color: #1e90ff;
+            color: #000;
             transform: scale(1.05);
         }
 
         .social-links {
             text-align: center;
             margin-top: 20px;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         .social-links a {
+            display: inline-block;
             color: #00bfff;
-            margin: 0 10px;
+            margin: 0 15px;
             text-decoration: none;
             font-size: 1.5em;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
 
         .social-links a:hover {
-            color: #1e90ff;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .social-links i {
+            margin-right: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000000;
+            color: #fff;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
         }
 
         @media (max-width: 768px) {
@@ -208,11 +225,20 @@
             <h2>Contact</h2>
             <p>📬 Let's connect! Whether you have a question or just want to say hi, I'm all ears. Reach out to me, and let's start a conversation that could lead to our next big adventure.</p>
             <a href="mailto:muntasimbillah281@gmail.com" class="button">Email Me</a>
+            <div class="social-links">
+                <a href="https://www.facebook.com/yourprofile" target="_blank"><i class="fa fa-facebook"></i>Facebook</a>
+                <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fa fa-instagram"></i>Instagram</a>
+                <a href="https://discord.gg/yourdiscord" target="_blank"><i class="fa fa-discord"></i>Discord</a>
+            </div>
         </section>
     </div>
 
     <footer>
         <p>Copyright © 2024 Ayan Islam. All rights reserved.</p>
+    </
     </footer>
+
+    <!-- Font Awesome for social media icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
