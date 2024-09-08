@@ -10,8 +10,8 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: #000000;
-            color: #e0e0e0;
+            background: #0e1111;
+            color: #e0f7fa;
             line-height: 1.6;
             overflow-x: hidden; /* Prevent horizontal scrolling */
             scroll-behavior: smooth; /* Enable smooth scrolling */
@@ -26,20 +26,21 @@
             background: url('') no-repeat center center;
             background-size: cover;
             z-index: -1;
+            box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15); /* Snow light shadow */
         }
 
         header {
             text-align: center;
             background: transparent;
             padding: 40px 20px;
-            border-bottom: 5px solid #00aaff;
-            color: #fff;
+            border-bottom: 5px solid #00bcd4;
+            color: #e0f7fa;
         }
 
         header img {
             border-radius: 50%;
             width: 180px;
-            border: 5px solid #fff;
+            border: 5px solid #e0f7fa;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             animation: zoomIn 5s infinite;
         }
@@ -59,7 +60,7 @@
         header h1 {
             margin: 20px 0 0;
             font-size: 2.5rem;
-            color: #fff;
+            color: #e0f7fa;
             animation: headerAnimation 2s ease-in-out infinite;
         }
 
@@ -87,18 +88,19 @@
         }
 
         section {
-            background: #1a1a1a;
+            background: #1b262c;
             margin: 20px 0;
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, color 0.3s ease;
             text-align: center;
             position: relative;
         }
 
         section:hover {
-            background: #2a2a2a;
+            background: #2c3e50;
+            color: #ffffff;
         }
 
         section::before {
@@ -108,7 +110,7 @@
             bottom: 0;
             width: 100%;
             height: 3px;
-            background: #00aaff;
+            background: #00bcd4;
             transform: scaleX(0);
             transform-origin: center;
             transition: transform 0.3s ease;
@@ -119,7 +121,7 @@
         }
 
         h2 {
-            color: #00aaff;
+            color: #00bcd4;
             border-bottom: 3px solid transparent;
             padding-bottom: 10px;
             margin-bottom: 20px;
@@ -136,35 +138,35 @@
             bottom: 0;
             width: 100%;
             height: 2px;
-            background: #00aaff;
+            background: #00bcd4;
             transform: scaleX(0);
             transform-origin: center;
             transition: transform 0.3s ease, background 0.3s ease;
         }
 
         h2:hover {
-            color: #fff;
+            color: #ffffff;
         }
 
         h2:hover::after {
             transform: scaleX(1);
-            background: #fff;
+            background: #ffffff;
         }
 
         p {
-            color: #e0e0e0;
+            color: #e0f7fa;
             transition: color 0.3s ease;
         }
 
         p:hover {
-            color: #fff;
+            color: #ffffff;
         }
 
         footer {
             text-align: center;
             padding: 20px;
             background: #333;
-            color: #fff;
+            color: #ffffff;
         }
 
         footer p {
@@ -172,14 +174,14 @@
             font-size: 1rem;
         }
 
-        .button, .social-links a {
+        .button {
             display: inline-block;
             padding: 12px 24px;
             margin: 10px;
             border-radius: 8px;
-            color: #fff;
+            color: #e0f7fa;
             text-decoration: none;
-            background: #00aaff;
+            background: #00bcd4;
             position: relative;
             overflow: hidden;
             transition: background 0.3s ease, transform 0.3s ease;
@@ -187,25 +189,25 @@
             font-weight: bold;
         }
 
-        .button::before, .social-links a::before {
+        .button::before {
             content: '';
             position: absolute;
             left: 50%;
             bottom: 0;
             width: 100%;
             height: 2px;
-            background: #fff;
+            background: #e0f7fa;
             transform: translateX(-50%) scaleX(0);
             transition: transform 0.3s ease;
         }
 
-        .button:hover, .social-links a:hover {
-            background: #007aff;
-            color: #fff;
+        .button:hover {
+            background: #00838f;
+            color: #ffffff;
             transform: scale(1.05);
         }
 
-        .button:hover::before, .social-links a:hover::before {
+        .button:hover::before {
             transform: translateX(-50%) scaleX(1);
         }
 
@@ -220,23 +222,31 @@
 
         .social-links a {
             margin: 0 15px;
-            font-size: 1.5rem;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: #00aaff;
-            color: #fff;
-            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 2rem; /* Larger size for better visibility */
+            color: #ffffff; /* White by default */
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px; /* Adjust position if needed */
+            width: 100%;
+            height: 2px;
+            background: #00bcd4; /* Cyan underline */
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
         }
 
         .social-links a:hover {
-            background: transparent;
-            color: #00aaff;
-            transform: scale(1.1);
-            box-shadow: 0 0 0 2px #fff;
+            color: #00bcd4; /* Cyan on hover */
+        }
+
+        .social-links a:hover::before {
+            transform: scaleX(1);
         }
 
         @media (max-width: 768px) {
@@ -259,7 +269,7 @@
 
     <header>
         <div class="container">
-            <img src="https://media.discordapp.net/attachments/1029793075301720196/1281229691180810314/ayan.png?ex=66dc4722&is=66daf5a2&hm=dc90c258c90bc10588e27b753a6bfbc1493012c71a59a17bab9ac63a8e62e971&=&format=webp&quality=lossless&width=670&height=670" alt="Ayan Islam" class="profile-picture">
+            <img src="https://media.discordapp.net/attachments/1029793075301720196/1281229691180810314/ayan.png?ex=66daf5a2&is=66d9a422&hm=628eae8cbfde30ee5e75114cc03c5993d95c6902648bf64a2d875bca35e08d8d&=&format=webp&quality=lossless&width=670&height=670" alt="Ayan Islam" class="profile-picture">
             <h1>Ayan Islam's Portfolio 🌟</h1>
         </div>
     </header>
@@ -277,10 +287,10 @@
 
         <section id="skills">
             <h2>Skills</h2>
-            <p>💼 Here's a snapshot of my technical toolkit: Java (Spring, Hibernate), Unreal Engine, Unity 3D, SQL, NoSQL (MongoDB), and more. I'm always on the lookout for new technologies to master!</p>
+            <p>💼 Here's a snapshot of my technical toolkit: Java (Spring, Hibernate), Unreal Engine, Unity 3D, SQL, NoSQL (MongoDB),
+            and more. I'm always on the lookout for new technologies to master!</p>
         </section>
 
-        <section id="contact
         <section id="contact">
             <h2>Contact</h2>
             <p>📬 Let's connect! Whether you have a question or just want to say hi, I'm all ears. Reach out to me, and let's start a conversation that could lead to our next big adventure.</p>
