@@ -13,8 +13,8 @@
             background: #0e1111;
             color: #e0f7fa;
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-            scroll-behavior: smooth; /* Enable smooth scrolling */
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         .background {
@@ -26,7 +26,7 @@
             background: url('') no-repeat center center;
             background-size: cover;
             z-index: -1;
-            box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15); /* Snow light shadow */
+            box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15);
         }
 
         header {
@@ -222,8 +222,8 @@
 
         .social-links a {
             margin: 0 15px;
-            font-size: 2rem; /* Larger size for better visibility */
-            color: #ffffff; /* White by default */
+            font-size: 2rem; 
+            color: #ffffff; 
             position: relative;
             transition: color 0.3s ease;
         }
@@ -232,17 +232,17 @@
             content: '';
             position: absolute;
             left: 0;
-            bottom: -5px; /* Adjust position if needed */
+            bottom: -5px; 
             width: 100%;
             height: 2px;
-            background: #00bcd4; /* Cyan underline */
+            background: #00bcd4; 
             transform: scaleX(0);
             transform-origin: center;
             transition: transform 0.3s ease;
         }
 
         .social-links a:hover {
-            color: #00bcd4; /* Cyan on hover */
+            color: #00bcd4; 
         }
 
         .social-links a:hover::before {
@@ -290,6 +290,18 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Animation for sections */
+        .section-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section-animate.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -308,23 +320,22 @@
     </header>
 
     <div class="container">
-        <section id="about-me">
+        <section id="about-me" class="section-animate">
             <h2>About Me</h2>
             <p>👋 Hi there! I'm Ayan Islam, a 19-year-old aspiring entrepreneur with a passion for learning new skills and watching anime. I am the founder of Ascendancy, a thriving Discord community, and currently, I'm focused on mastering DropShipping while working on my Notion OS. With 3 years of experience as a Notion expert, I'm also building a YouTube channel where I will create tutorials to help others build their own Notion OS and explore the full potential of Notion.</p>
         </section>
 
-        <section id="projects">
+        <section id="projects" class="section-animate">
             <h2>Projects</h2>
             <p>🚀 Explore my projects and the work I've done as a Notion expert, and discover how I can help you organize your life or business with custom Notion setups.</p>
         </section>
 
-        <section id="skills">
+        <section id="skills" class="section-animate">
             <h2>Skills</h2>
-            <p>💼 Here's a snapshot of my technical toolkit: Java (Spring, Hibernate), Unreal Engine, Unity 3D, SQL, NoSQL (MongoDB),
-            and more. I'm always on the lookout for new technologies to master!</p>
+            <p>💼 Here's a snapshot of my technical toolkit: Java (Spring, Hibernate), Unreal Engine, Unity 3D, SQL, NoSQL (MongoDB), and more. I'm always on the lookout for new technologies to master!</p>
         </section>
 
-        <section id="contact">
+        <section id="contact" class="section-animate">
             <h2>Contact</h2>
             <p>📬 Let's connect! Whether you have a question or just want to say hi, I'm all ears. Reach out to me, and let's start a conversation that could lead to our next big adventure.</p>
             <a href="mailto:muntasimbillah281@gmail.com" class="button">Email Me</a>
@@ -357,7 +368,31 @@
                 preloader.style.display = 'none';
             }, 500); // Delay to ensure opacity transition completes
         });
+
+        // Function to handle scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                section.classList.add('section-animate');
+                observer.observe(section);
+            });
+        });
     </script>
 </body>
 </html>
-
