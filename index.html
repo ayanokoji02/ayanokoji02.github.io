@@ -93,7 +93,7 @@
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
             text-align: center;
             position: relative;
         }
@@ -101,6 +101,7 @@
         section:hover {
             background: #2c3e50;
             color: #ffffff;
+            transform: translateY(-5px);
         }
 
         section::before {
@@ -338,7 +339,7 @@
         <section id="contact" class="section-animate">
             <h2>Contact</h2>
             <p>📬 Let's connect! Whether you have a question or just want to say hi, I'm all ears. Reach out to me, and let's start a conversation that could lead to our next big adventure.</p>
-            <a href="mailto:muntasimbillah281@gmail.com" class="button">Email Me</a>
+            <a href="/cdn-cgi/l/email-protection#305d455e445143595d52595c5c515802080170575d51595c1e535f5d" class="button">Email Me</a>
             <div class="social-links">
                 <a href="https://www.facebook.com/ayanIslam.281" target="_blank" aria-label="Facebook">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" style="width: 24px; height: 24px;">
@@ -357,8 +358,8 @@
         <p>© 2024 Ayan Islam. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Preloader -->
-    <script>
+    <!-- JavaScript for Preloader and Smooth Scrolling -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Function to hide the preloader when the page is fully loaded
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
@@ -393,6 +394,52 @@
                 observer.observe(section);
             });
         });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Throttle function to limit how often a function can fire
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        // Smooth reveal on scroll
+        function revealOnScroll() {
+            const sections = document.querySelectorAll('section');
+            const windowHeight = window.innerHeight;
+            const revealPoint = 150;
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < windowHeight - revealPoint) {
+                    section.classList.add('show');
+                } else {
+                    section.classList.remove('show');
+                }
+            });
+        }
+
+        // Initial call
+        revealOnScroll();
+
+        // Throttled scroll event listener
+        window.addEventListener('scroll', throttle(revealOnScroll, 100));
     </script>
 </body>
 </html>
