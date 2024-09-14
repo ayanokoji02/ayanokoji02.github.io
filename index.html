@@ -32,16 +32,16 @@
         header {
             text-align: center;
             background: transparent;
-            padding: 40px 20px;
-            border-bottom: 5px solid #00bcd4;
+            padding: 20px 10px;
+            border-bottom: 3px solid #00bcd4;
             color: #e0f7fa;
         }
 
         header img {
             border-radius: 50%;
-            width: 180px;
-            border: 5px solid #e0f7fa;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            width: 120px; /* Reduced image size */
+            border: none; /* Removed border */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Reduced shadow */
             animation: zoomIn 5s infinite;
         }
 
@@ -58,8 +58,8 @@
         }
 
         header h1 {
-            margin: 20px 0 0;
-            font-size: 2.5rem;
+            margin: 10px 0 0;
+            font-size: 2rem; /* Reduced font size */
             color: #e0f7fa;
             animation: headerAnimation 2s ease-in-out infinite;
         }
@@ -70,7 +70,7 @@
                 opacity: 1;
             }
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-5px); /* Reduced movement */
                 opacity: 0.7;
             }
             100% {
@@ -93,15 +93,16 @@
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, color 0.3s ease;
             text-align: center;
             position: relative;
+            opacity: 0; /* Ensure sections start as hidden */
+            transition: opacity 0.6s ease-out; /* Smooth fade-in effect */
         }
 
         section:hover {
             background: #2c3e50;
             color: #ffffff;
-            transform: translateY(-5px);
         }
 
         section::before {
@@ -294,14 +295,17 @@
 
         /* Animation for sections */
         .section-animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            opacity: 0; /* Start as invisible */
+            transition: opacity 0.6s ease-out; /* Smooth fade-in effect */
         }
 
         .section-animate.show {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1; /* Fade in */
+        }
+
+        .social-links-container {
+            margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
@@ -340,6 +344,9 @@
             <h2>Contact</h2>
             <p>📬 Let's connect! Whether you have a question or just want to say hi, I'm all ears. Reach out to me, and let's start a conversation that could lead to our next big adventure.</p>
             <a href="/cdn-cgi/l/email-protection#305d455e445143595d52595c5c515802080170575d51595c1e535f5d" class="button">Email Me</a>
+        </section>
+
+        <div class="social-links-container">
             <div class="social-links">
                 <a href="https://www.facebook.com/ayanIslam.281" target="_blank" aria-label="Facebook">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" style="width: 24px; height: 24px;">
@@ -351,7 +358,7 @@
                     <img src="https://logodownload.org/wp-content/uploads/2017/11/discord-logo-1-1.png" alt="Discord Logo" style="width: 24px; height: 24px;">
                 </a>
             </div>
-        </section>
+        </div>
     </div>
 
     <footer>
@@ -359,7 +366,8 @@
     </footer>
 
     <!-- JavaScript for Preloader and Smooth Scrolling -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
         // Function to hide the preloader when the page is fully loaded
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
