@@ -1,453 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Ayan Islam's Portfolio</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="../../9J92G7tn1VcI.rs/Kznl4Nz0oYsP.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            position: relative;
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #0e1111;
-            color: #e0f7fa;
-            line-height: 1.6;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: url('') no-repeat center center;
-            background-size: cover;
-            z-index: -1;
-            box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15);
-        }
-
-        header {
-            text-align: center;
-            background: transparent;
-            padding: 20px 10px;
-            border-bottom: 3px solid #00bcd4;
-            color: #e0f7fa;
-        }
-
-        header img {
-            border-radius: 50%;
-            width: 120px; /* Reduced image size */
-            border: none; /* Removed border */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Reduced shadow */
-            animation: zoomIn 5s infinite;
-        }
-
-        @keyframes zoomIn {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        header h1 {
-            margin: 10px 0 0;
-            font-size: 2rem; /* Reduced font size */
-            color: #e0f7fa;
-            animation: headerAnimation 2s ease-in-out infinite;
-        }
-
-        @keyframes headerAnimation {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-5px); /* Reduced movement */
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        section {
-            background: #1b262c;
-            margin: 20px 0;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: background 0.6s ease, color 0.6s ease;
-            text-align: center;
-            position: relative;
-            opacity: 0; /* Ensure sections start as hidden */
-            transition: opacity 0.6s ease-out; /* Smooth fade-in effect */
-        }
-
-        section:hover {
-            background: #2c3e50;
-            color: #ffffff;
-        }
-
-        section::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 3px;
-            background: #00bcd4;
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.6s ease;
-        }
-
-        section:hover::before {
-            transform: scaleX(1);
-        }
-
-        h2 {
-            color: #00bcd4;
-            border-bottom: 3px solid transparent;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: color 0.6s ease;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background: #00bcd4;
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.6s ease, background 0.6s ease;
-        }
-
-        h2:hover {
-            color: #ffffff;
-        }
-
-        h2:hover::after {
-            transform: scaleX(1);
-            background: #ffffff;
-        }
-
-        p {
-            color: #e0f7fa;
-            transition: color 0.3s ease;
-        }
-
-        p:hover {
-            color: #ffffff;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #333;
-            color: #ffffff;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 1rem;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 12px 24px;
-            margin: 10px;
-            border-radius: 8px;
-            color: #e0f7fa;
-            text-decoration: none;
-            background: #00bcd4;
-            position: relative;
-            overflow: hidden;
-            transition: background 0.6s ease, transform 0.6s ease;
-            font-size: 1rem;
-            font-weight: bold;
-        }
-
-        .button::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background: #e0f7fa;
-            transform: translateX(-50%) scaleX(0);
-            transition: transform 0.6s ease;
-        }
-
-        .button:hover {
-            background: #00838f;
-            color: #ffffff;
-            transform: scale(1.05);
-        }
-
-        .button:hover::before {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            padding: 20px;
-            background: #222;
-            border-radius: 8px;
-        }
-
-        .social-links a {
-            margin: 0 15px;
-            font-size: 2rem; 
-            color: #ffffff; 
-            position: relative;
-            transition: color 0.6s ease;
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px; 
-            width: 100%;
-            height: 2px;
-            background: #00bcd4; 
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.6s ease;
-        }
-
-        .social-links a:hover {
-            color: #00bcd4; 
-        }
-
-        .social-links a:hover::before {
-            transform: scaleX(1);
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            section {
-                padding: 20px;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Preloader Styles */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: #0e1111; /* Match the background color */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999; /* Make sure it's on top of everything */
-        }
-
-        .loader {
-            border: 8px solid #e0f7fa; /* Light cyan border */
-            border-top: 8px solid #00bcd4; /* Cyan border-top */
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            animation: spin 1.5s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Animation for sections */
-        .section-animate {
-            opacity: 0; /* Start as invisible */
-            transition: opacity 0.6s ease-out; /* Smooth fade-in effect */
-        }
-
-        .section-animate.show {
-            opacity: 1; /* Fade in */
-        }
-
-        .social-links-container {
-            margin-top: 20px;
-            text-align: center;
-        }
-    </style>
+    <meta name="generator" content="Astro v4.16.7">
+    <title>Sadat's Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
-<body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-
-    <div class="background"></div>
-
-    <header>
-        <div class="container">
-            <img src="https://i.ibb.co.com/HdQB4JY/ayan.png" alt="Ayan Islam" class="profile-picture">
-            <h1>Ayan Islam's Portfolio 🌟</h1>
-        </div>
-    </header>
-
-    <div class="container">
-        <section id="about-me" class="section-animate">
-            <h2>About Me</h2>
-            <p>👋 Hi there! I'm Ayan Islam, a 19-year-old aspiring entrepreneur with a passion for learning new skills and watching anime. I am the founder of Ascendancy, a thriving Discord community, and currently, I'm focused on mastering DropShipping while working on my Notion OS. With 3 years of experience as a Notion expert, I'm also building a YouTube channel where I will create tutorials to help others build their own Notion OS and explore the full potential of Notion.</p>
-        </section>
-
-        <section id="projects" class="section-animate">
-            <h2>Projects</h2>
-            <p>🚀 Explore my projects and the work I've done as a Notion expert, and discover how I can help you organize your life or business with custom Notion setups.</p>
-        </section>
-
-        <section id="skills" class="section-animate">
-            <h2>Skills</h2>
-            <p>💼 Here's a snapshot of my technical toolkit: Java (Spring, Hibernate), Unreal Engine, Unity 3D, SQL, NoSQL (MongoDB), and more. I'm always on the lookout for new technologies to master!</p>
-        </section>
-
-        <section id="contact" class="section-animate">
-            <h2>Contact</h2>
-            <p>📬 Let's connect! Whether you have a question or just want to say hi, I'm all ears. Reach out to me, and let's start a conversation that could lead to our next big adventure.</p>
-            <a href="mailto:muntasimbillah281@gmail.com" class="button">Email Me</a>
-        </section>
-
-        <div class="social-links-container">
-            <div class="social-links">
-                <a href="https://www.facebook.com/ayanIslam.281" target="_blank" aria-label="Facebook">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" style="width: 24px; height: 24px;">
-                </a>
-                <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" style="width: 24px; height: 24px;">
-                </a>
-                <a href="https://discord.gg/uSStHepegr" target="_blank" aria-label="Discord">
-                    <img src="https://logodownload.org/wp-content/uploads/2017/11/discord-logo-1-1.png" alt="Discord Logo" style="width: 24px; height: 24px;">
-                </a>
+<body class="flex min-h-screen items-center justify-center bg-black p-2 font-mono text-white sm:p-4" style="font-family: 'JetBrains Mono', monospace;">
+    <div class="container-wrapper">
+        <main class="relative w-full max-w-6xl border border-white p-4 text-xs sm:p-6 sm:text-sm">
+            <div class="absolute -top-3 left-2 bg-black px-2">
+                <span class="text-sm font-bold">Resume</span>
             </div>
-        </div>
+            <div class="mt-2">
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                    <div class="md:col-span-1">
+                        <header class="mb-6">
+                            <h1 class="mb-1 text-3xl font-bold">Sadat Sahib</h1>
+                            <p class="text-sm text-gray-400">Java Dev. &amp; Systems Engineer</p>
+                            <div class="mt-2 space-y-1 text-xs text-gray-500">
+                                <p>
+                                    <i class="fas fa-map-marker-alt inline-block w-4"></i> Barishal, BD
+                                </p>
+                                <p>
+                                    <i class="fas fa-envelope inline-block w-4"></i>
+                                    <a href="mailto:sahib.2009.sa@gmail.com" class="hover:text-white transition-colors">sahib.2009.sa@gmail.com</a>
+                                </p>
+                                <p>
+                                    <i class="fab fa-github inline-block w-4"></i>
+                                    <a href="https://github.com/ssquadteam" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                                        github.com/ssquadteam
+                                    </a>
+                                </p>
+                            </div>
+                        </header>
+                        <section>
+                            <h2 class="mb-3 text-xl font-bold">Technical Expertise</h2>
+                            <div class="space-y-2">
+                                <div>
+                                    <div class="mb-1 flex items-center justify-between">
+                                        <span class="text-sm">Docker/Kubernetes</span>
+                                        <span class="text-xs text-gray-400">Expert</span>
+                                    </div>
+                                    <div class="flex h-2 w-full">
+                                        <div class="h-full w-1/4" style="background-color: #212529"></div>
+                                        <div class="h-full w-1/4" style="background-color: #495057"></div>
+                                        <div class="h-full w-1/4" style="background-color: #adb5bd"></div>
+                                        <div class="h-full w-1/4" style="background-color: #dee2e6"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-1 flex items-center justify-between">
+                                        <span class="text-sm">JVM Languages</span>
+                                        <span class="text-xs text-gray-400">Expert</span>
+                                    </div>
+                                    <div class="flex h-2 w-full">
+                                        <div class="h-full w-1/4" style="background-color: #212529"></div>
+                                        <div class="h-full w-1/4" style="background-color: #495057"></div>
+                                        <div class="h-full w-1/4" style="background-color: #adb5bd"></div>
+                                        <div class="h-full w-1/4" style="background-color: #dee2e6"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-1 flex items-center justify-between">
+                                        <span class="text-sm">C++/C#/C</span>
+                                        <span class="text-xs text-gray-400">Expert</span>
+                                    </div>
+                                    <div class="flex h-2 w-full">
+                                        <div class="h-full w-1/4" style="background-color: #212529"></div>
+                                        <div class="h-full w-1/4" style="background-color: #495057"></div>
+                                        <div class="h-full w-1/4" style="background-color: #adb5bd"></div>
+                                        <div class="h-full w-1/4" style="background-color: #dee2e6"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-1 flex items-center justify-between">
+                                        <span class="text-sm">Network Security</span>
+                                        <span class="text-xs text-gray-400">Expert</span>
+                                    </div>
+                                    <div class="flex h-2 w-full">
+                                        <div class="h-full w-1/4" style="background-color: #212529"></div>
+                                        <div class="h-full w-1/4" style="background-color: #495057"></div>
+                                        <div class="h-full w-1/4" style="background-color: #adb5bd"></div>
+                                        <div class="h-full w-1/4" style="background-color: #dee2e6"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-1 flex items-center justify-between">
+                                        <span class="text-sm">Unreal Engine</span>
+                                        <span class="text-xs text-gray-400">Expert</span>
+                                    </div>
+                                    <div class="flex h-2 w-full">
+                                        <div class="h-full w-1/4" style="background-color: #212529"></div>
+                                        <div class="h-full w-1/4" style="background-color: #495057"></div>
+                                        <div class="h-full w-1/4" style="background-color: #adb5bd"></div>
+                                        <div class="h-full w-1/4" style="background-color: #dee2e6"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-1 flex items-center justify-between">
+                                        <span class="text-sm">MySQL, MariaDB, MongoDB</span>
+                                        <span class="text-xs text-gray-400">Advanced</span>
+                                    </div>
+                                    <div class="flex h-2 w-full">
+                                        <div class="h-full w-1/4" style="background-color: #212529"></div>
+                                        <div class="h-full w-1/4" style="background-color: #495057"></div>
+                                        <div class="h-full w-1/4" style="background-color: #adb5bd"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-1 flex items-center justify-between">
+                                        <span class="text-sm">Linux/UNIX Systems</span>
+                                        <span class="text-xs text-gray-400">Advanced</span>
+                                    </div>
+                                    <div class="flex h-2 w-full">
+                                        <div class="h-full w-1/4" style="background-color: #212529"></div>
+                                        <div class="h-full w-1/4" style="background-color: #495057"></div>
+                                        <div class="h-full w-1/4" style="background-color: #adb5bd"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-1 flex items-center justify-between">
+                                        <span class="text-sm">Full-stack Web Development</span>
+                                        <span class="text-xs text-gray-400">Intermediate</span>
+                                    </div>
+                                    <div class="flex h-2 w-full">
+                                        <div class="h-full w-1/4" style="background-color: #212529"></div>
+                                        <div class="h-full w-1/4" style="background-color: #495057"></div>
+                                    </div>
+                                </div>
+                        </section>
+                    </div>
+                    <div class="md:col-span-2">
+                        <section class="mb-6">
+                            <h2 class="mb-4 text-2xl font-bold">Professional Experience</h2>
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-bold">CEO & Infrastructure Lead</h3>
+                                    <p class="text-sm text-gray-400">
+                                        Minex Network | 2021 - 2022
+                                    </p>
+                                    <p class="mt-2 text-sm">System administration and infrastructure development.</p>
+                                    <ul class="mt-2 list-inside list-disc text-sm text-gray-400">
+                                        <li>Developed on-demand scaled servers with Kubernetes technologies</li>
+                                        <li>Created multitude of custom softwares for various use cases</li>
+                                        <li>Primary network infrastructure management.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <h2 class="mb-3 text-xl font-bold">Notable Projects</h2>
+                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                <div class="project-card border border-gray-700 p-3">
+                                    <h3 class="mb-1 text-lg font-bold">ApiaryProxy</h3>
+                                    <p class="mb-2 text-sm text-gray-400">Modernized Velocity Fork for maximum performance.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Minecraft</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Kotlin</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Java</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Proxy</span>
+                                    </div>
+                                </div>
+                                <div class="project-card border border-gray-700 p-3">
+                                    <h3 class="mb-1 text-lg font-bold">ApiaryMC</h3>
+                                    <p class="mb-2 text-sm text-gray-400">Performant Folia Fork with Bukkit support.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Minecraft</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">MC Patches</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Folia</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Java</span>
+                                    </div>  
+                                </div>
+                                <div class="project-card border border-gray-700 p-3">
+                                    <h3 class="mb-1 text-lg font-bold">Earth</h3>
+                                    <p class="mb-2 text-sm text-gray-400">Unique Minecraft Kingdoms Gamemode. (Inspired by Civilizations)</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Minecraft</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">SpigotAPI</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Plugin</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Java</span>
+                                    </div>  
+                                </div>
+                                <div class="project-card border border-gray-700 p-3">
+                                    <h3 class="mb-1 text-lg font-bold">GP-Folia</h3>
+                                    <p class="mb-2 text-sm text-gray-400">GriefPrevention Ported to Folia. (Finally)</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Minecraft</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">BukkitAPI</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Plugin</span>
+                                        <span class="border border-gray-600 px-2 py-1 text-xs text-gray-300">Java</span>
+                                    </div>  
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-
-    <footer>
-        <p>© 2024 Ayan Islam. All rights reserved.</p>
-    </footer>
-
-    <!-- JavaScript for Preloader and Smooth Scrolling -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script>
-        // Function to hide the preloader when the page is fully loaded
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            preloader.style.transition = 'opacity 0.5s ease-out';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500); // Delay to ensure opacity transition completes
-        });
-
-        // Function to handle scroll animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('section');
-
-            const options = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('show');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, options);
-
-            sections.forEach(section => {
-                section.classList.add('section-animate');
-                observer.observe(section);
-            });
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Throttle function to limit how often a function can fire
-        function throttle(func, limit) {
-            let inThrottle;
-            return function() {
-                const args = arguments;
-                const context = this;
-                if (!inThrottle) {
-                    func.apply(context, args);
-                    inThrottle = true;
-                    setTimeout(() => inThrottle = false, limit);
-                }
-            }
-        }
-
-        // Smooth reveal on scroll
-        function revealOnScroll() {
-            const sections = document.querySelectorAll('section');
-            const windowHeight = window.innerHeight;
-            const revealPoint = 150;
-
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                if (sectionTop < windowHeight - revealPoint) {
-                    section.classList.add('show');
-                } else {
-                    section.classList.remove('show');
-                }
-            });
-        }
-
-        // Initial call
-        revealOnScroll();
-
-        // Throttled scroll event listener
-        window.addEventListener('scroll', throttle(revealOnScroll, 100));
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>
